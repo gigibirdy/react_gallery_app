@@ -1,3 +1,10 @@
+The config.js file is stored in /src directory.
+
+This single page application was developed with React, JSX, React Router modules and Flickr API.
+The purpose is to fetch data from the Flickr API and display up to 24 images on this web page.
+User receives relevant images when clicking on one of the three default topics. User also can utilize the search module to get relevant images by submitting search input. Not found message will display if there is no search result. A 404 error page will render if user navigate to a non-exist path. Loading indicator shows before fetching data is received.  
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
