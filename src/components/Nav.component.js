@@ -4,18 +4,20 @@ import NotFound from './NotFound.component.js';
 import Photo from './Photo.component';
 
 export default class Nav extends Component{
-  //call onSearch method, request data and update the url when one of the nav links is clicked.
+  //call onSearch method, request data, update state isLoading to true and update the url when one of the nav links is clicked.
   handleClick = (e) => {
     e.preventDefault();
     this.props.onSearch(e.target.textContent);
     this.props.history.push(`/${e.target.textContent.toLowerCase()}`)
+    this.props.toggleLoading();
   };
 
-  //call onSearch method, request data and update the url when user enters clicks submit button in search field.
+  //call onSearch method, request data, update state isLoading to true and update the url when user enters clicks submit button in search field.
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSearch(this.query.value);
     this.props.history.push(`/search/${this.query.value}`);
+    this.props.toggleLoading();
     e.currentTarget.reset();
   };
 

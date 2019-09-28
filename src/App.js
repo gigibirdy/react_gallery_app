@@ -12,6 +12,7 @@ class App extends Component {
       isLoading: true
     }
     this.search = this.search.bind(this);
+    this.handleLoading = this.handleLoading.bind(this);
   };
   //render 24 images once component is mounted
   componentDidMount(){
@@ -30,16 +31,22 @@ class App extends Component {
         console.log('Error fetching and parsing data', error);
       })
   };
+  //once images are rendered, toggle value of isLoading to true
+  handleLoading() {
+    this.setState({
+      isLoading: true
+    })
+  }
   render(){
     return (
       <div className="container">
         <Switch>
-          <Route exact path='/' render={(routeProps) => <Nav results={this.state.results} isLoading={this.state.isLoading} onSearch={this.search} {...routeProps}/>}/>
-          <Route exact path='/search' render={(routeProps) => <Nav results={this.state.results} isLoading={this.state.isLoading} onSearch={this.search} {...routeProps}/>}/>
-          <Route exact path='/search/:query' render={(routeProps) => <Nav results={this.state.results} isLoading={this.state.isLoading} onSearch={this.search} {...routeProps}/>}/>
-          <Route exact path='/cats' render={(routeProps) => <Nav results={this.state.results} isLoading={this.state.isLoading} onSearch={this.search} {...routeProps}/>}/>
-          <Route exact path='/dogs' render={(routeProps) => <Nav results={this.state.results} isLoading={this.state.isLoading} onSearch={this.search} {...routeProps}/>}/>
-          <Route exact path='/computers' render={(routeProps) => <Nav results={this.state.results} isLoading={this.state.isLoading} onSearch={this.search} {...routeProps}/>}/>
+          <Route exact path='/' render={(routeProps) => <Nav results={this.state.results} isLoading={this.state.isLoading} onSearch={this.search} toggleLoading={this.handleLoading} {...routeProps}/>}/>
+          <Route exact path='/search' render={(routeProps) => <Nav results={this.state.results} isLoading={this.state.isLoading} onSearch={this.search} toggleLoading={this.handleLoading} {...routeProps}/>}/>
+          <Route exact path='/search/:query' render={(routeProps) => <Nav results={this.state.results} isLoading={this.state.isLoading} onSearch={this.search} toggleLoading={this.handleLoading} {...routeProps}/>}/>
+          <Route exact path='/cats' render={(routeProps) => <Nav results={this.state.results} isLoading={this.state.isLoading} onSearch={this.search} toggleLoading={this.handleLoading} {...routeProps}/>}/>
+          <Route exact path='/dogs' render={(routeProps) => <Nav results={this.state.results} isLoading={this.state.isLoading} onSearch={this.search} toggleLoading={this.handleLoading} {...routeProps}/>}/>
+          <Route exact path='/computers' render={(routeProps) => <Nav results={this.state.results} isLoading={this.state.isLoading} onSearch={this.search} toggleLoading={this.handleLoading} {...routeProps}/>}/>
           <Route render={ () => <h3 className="not-found">404 Page not found.</h3> }/>
         </Switch>
       </div>
