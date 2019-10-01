@@ -40,6 +40,7 @@ class App extends Component {
   render(){
     return (
       <div className="container">
+        <h1 style={{background: "#438bbd", padding: "10px 15px", color: "white", borderRadius: "5px", textAlign: "left", marginBottom: "60px"}}>React Gallery App</h1>
         <Switch>
           <Route exact path='/' render={(routeProps) => <Nav results={this.state.results} isLoading={this.state.isLoading} onSearch={this.search} toggleLoading={this.handleLoading} {...routeProps}/>}/>
           <Route exact path='/search' render={(routeProps) => <Nav results={this.state.results} isLoading={this.state.isLoading} onSearch={this.search} toggleLoading={this.handleLoading} {...routeProps}/>}/>
